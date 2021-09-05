@@ -1,6 +1,7 @@
-  
+// Imports
 import React from 'react';
 
+// Code 
 const Gallery = (props) => {
   return (
 <div class="photo-container">
