@@ -1,15 +1,15 @@
 // Imports
 import React from 'react';
-// import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 // Code
-const Navigation = () => {
+const Navigation = (props) => {
     return (
-        <nav class="main-nav">
+        <nav className ="main-nav">
         <ul>
-          <li><a href='/cutecats'>Cats</a></li>
-          <li><a href='/clothing'>Clothing</a></li>
-          <li><a href='/models'>Models</a></li>
+          <li><NavLink to='/cutecats' onClick={() => props.searchSubmit("cutecats")}>Cats</NavLink></li>
+          <li><NavLink to='/clothing' onClick={() => props.searchSubmit("clothing")}>Clothing</NavLink></li>
+          <li><NavLink to='/models' onClick={() => props.searchSubmit("models")}>Models</NavLink></li>
         </ul>
       </nav>
     )

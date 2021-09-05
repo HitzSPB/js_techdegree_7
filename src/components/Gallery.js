@@ -12,6 +12,7 @@ render(){
   {
     if(searchResults.length !== 0)
     {
+      // Mapping the array to Picture class elements
       result = searchResults.map(result => <Picture url={`https://farm${result.farm}.staticflickr.com/${result.server}/${result.id}_${result.secret}_n.jpg`} alt={result.title} key={result.id} />)
     }
     else
@@ -24,7 +25,7 @@ else
   result = <h1>Loading result</h1>
 }
   return (
-<div class="photo-container">
+<div className="photo-container">
         <h2>Results</h2>
         <ul>
         { result }
