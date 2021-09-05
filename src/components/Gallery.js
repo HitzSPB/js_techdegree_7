@@ -1,20 +1,18 @@
 // Imports
-import React, { Component, PureComponent } from 'react';
-
-import { withRouter } from 'react-router-dom'
+import React, { PureComponent } from 'react';
 import NotFound from './NotFound'
 import Picture from './Picture'
+
 // Code 
 class Gallery extends PureComponent {
 render(){
   const searchResults = this.props.photos;
-  console.log(searchResults)
   let result;
   if(!this.props.fetchingResult)
   {
-    if(searchResults.length != 0)
+    if(searchResults.length !== 0)
     {
-      result = searchResults.map(result => <Picture url={`https://farm${result.farm}.staticflickr.com/${result.server}/${result.id}_${result.secret}_n.jpg`} alt={result.title} />)
+      result = searchResults.map(result => <Picture url={`https://farm${result.farm}.staticflickr.com/${result.server}/${result.id}_${result.secret}_n.jpg`} alt={result.title} key={result.id} />)
     }
     else
     {
