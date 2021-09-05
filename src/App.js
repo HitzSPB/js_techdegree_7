@@ -1,5 +1,4 @@
 // Imports
-import './App.css';
 import './css/index.css';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import axios from 'axios';
@@ -19,7 +18,6 @@ state = {
 // Search call 
 // Using https://www.flickr.com/services/api/explore/flickr.photos.search
 Search = (text) =>{ 
-  console.log("Searching for text " + text)
   this.setState({fetchingResult: true})
   axios.get(`http://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${text}&format=json&per_page=24&nojsoncallback=1`)
 .then(response => {
@@ -30,6 +28,7 @@ Search = (text) =>{
 })
 .catch(error => console.error("Fetching data resulted in an error", error))};
 
+// Handling what to search for
 SearchTextHandler = () => {
     // https://stackoverflow.com/questions/39823681/read-the-current-full-url-with-react
     if(window.location.pathname.includes('search')){
@@ -45,11 +44,12 @@ SearchTextHandler = () => {
 componentDidMount(){
   this.SearchTextHandler();
 }
+// Triggers a search even upon pressing the search button
 SearchSubmit = () => {
   this.SearchTextHandler();
 }
- render(
- ){ return (
+ render(){ 
+   return (
   <BrowserRouter>
   <div className="container">
     <Search searchSubmit={this.SearchSubmit}/>
@@ -63,17 +63,7 @@ SearchSubmit = () => {
       <Route component={NoPageFound} /> 
     </Switch>
   </div>
-</BrowserRouter>
-    // <div class="container">
-    //   <Search />
-    //   <Navigation />
-    //   <Gallery
-    //   photos={this.state.photos} 
-    //   performSearch={this.Search}
-    //   fetchingResult={this.state.fetchingResult}/>
-      
-    // </div>
-  );
+</BrowserRouter>);
 }
 }
 
