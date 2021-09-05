@@ -7,15 +7,29 @@ import Picture from './Picture'
 // Code 
 class Gallery extends PureComponent {
 render(){
+  const searchResults = this.props.photos;
+  console.log(searchResults)
+  let result;
+  if(!this.props.fetchingResult)
+  {
+    if(searchResults.length != 0)
+    {
+      result = searchResults.map(result => <Picture url={`https://farm${result.farm}.staticflickr.com/${result.server}/${result.id}_${result.secret}_n.jpg`} alt={result.title} />)
+    }
+    else
+    {
+      result =  <NotFound />;
+    }
+}
+else
+{
+  result = <h1>Loading result</h1>
+}
   return (
 <div class="photo-container">
         <h2>Results</h2>
         <ul>
-        this.props.photos;.map(result => 
-          <Picture url={`https://farm${result.farm}.staticflickr.com/${result.server}/${result.id}_${result.secret}_n.jpg`} />);
-          {/* <Picture
-          url={"https://farm5.staticflickr.com/4334/37032996241_4c16a9b530.jpg"} /> */}
-          <NotFound />
+        { result }
         </ul>
       </div>
   )}
