@@ -1,6 +1,8 @@
 // Imports
 import './App.css';
 import './css/index.css';
+import './Config'
+import { BrowserRouter, Route} from 'react-router-dom'
 import React from 'react'
 
 import Search from './components/Search';
