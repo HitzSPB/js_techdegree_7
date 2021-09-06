@@ -50,6 +50,8 @@ SearchTextHandler = (text = null) => {
 
 componentDidMount(){
   this.SearchTextHandler();
+  window.onpopstate = ()=> {this.SearchTextHandler();}
+
 }
 // Triggers a search even upon pressing the search button
 SearchSubmit = (text) => {
