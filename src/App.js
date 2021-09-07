@@ -19,7 +19,7 @@ state = {
 // Using https://www.flickr.com/services/api/explore/flickr.photos.search
 Search = (text) =>{ 
   this.setState({fetchingResult: true})
-  axios.get(`http://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${text}&format=json&per_page=24&nojsoncallback=1`)
+  axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&text=${text}&format=json&per_page=24&nojsoncallback=1`)
 .then(response => {
   this.setState({ 
     photos: response.data.photos.photo,
